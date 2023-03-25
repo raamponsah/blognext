@@ -9,12 +9,6 @@ import { GetStaticProps, NextPage } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-"id": "641efa50abaa737c95f20388",
-      "fullName": "Jeremy Fabian",
-      "about": "She is amazing",
-      "createdAt": "2023-03-25T13:42:40.638Z",
-      "updatedAt": "2023-03-25T13:42:40.638Z"
-
 interface DocInterface{
   id:string,
   fullName:string,
