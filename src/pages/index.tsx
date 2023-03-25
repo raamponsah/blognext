@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({data}) {
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>DEPLOYED!</h1>
+        <h1>DEPLOYED! {data}</h1>
        {/* {
         data.docs.map((datum:any)=>{
          return (<h3 key={datum.id}>{datum?.fullName}</h3>)
