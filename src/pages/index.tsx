@@ -3,10 +3,15 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import axios from 'axios'
+import { PropsWithChildren } from 'react'
+import { Props } from 'next/script'
+import { GetStaticProps } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export default function Home({data}) {
+type Data = {
+  name:string
+}
+export default function Home(data:Data) {
 
   return (
     <>
@@ -17,7 +22,7 @@ export default function Home({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>DEPLOYED! {data}</h1>
+        <h1>DEPLOYED! {data.name}</h1>
        {/* {
         data.docs.map((datum:any)=>{
          return (<h3 key={datum.id}>{datum?.fullName}</h3>)
@@ -29,10 +34,10 @@ export default function Home({data}) {
 }
 
 
-export  async function getStaticProps(){
+export const getStaticProps:GetStaticProps = async()=>{
 
   // const response = await axios.get('http://localhost:3000/api/staff/')
-  
+  const data = {name:'John Lennon'}
 
   return {
       props:{data:'names'}
