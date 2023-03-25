@@ -5,13 +5,17 @@ import styles from '@/styles/Home.module.css'
 import axios from 'axios'
 import { PropsWithChildren } from 'react'
 import { Props } from 'next/script'
-import { GetStaticProps } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
-type Data = {
+interface Data {
   name:string
 }
-export default function Home(data:Data) {
+
+interface DataObject{
+  data:Data
+}
+export default function Home({data}:any) {
 
   return (
     <>
@@ -37,7 +41,7 @@ export default function Home(data:Data) {
 export const getStaticProps:GetStaticProps = async()=>{
 
   // const response = await axios.get('http://localhost:3000/api/staff/')
-  const data = {name:'John Lennon'}
+  const data = {name:'John Lennon'} as Data
 
   return {
       props:{data}
