@@ -8,14 +8,8 @@ import { Props } from 'next/script'
 import { GetStaticProps, NextPage } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
-interface Data {
-  name:string
-}
 
-interface DataObject{
-  data:Data
-}
-export default function Home({data}:any) {
+export default function Home({name}:{name:string}) {
 
   return (
     <>
@@ -26,7 +20,7 @@ export default function Home({data}:any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>DEPLOYED! {data.name}</h1>
+        <h1>DEPLOYED! {name}</h1>
        {/* {
         data.docs.map((datum:any)=>{
          return (<h3 key={datum.id}>{datum?.fullName}</h3>)
@@ -41,7 +35,7 @@ export default function Home({data}:any) {
 export const getStaticProps:GetStaticProps = async()=>{
 
   // const response = await axios.get('http://localhost:3000/api/staff/')
-  const data = {name:'John Lennon'} as Data
+  const data = {name:'John Lennon'}
 
   return {
       props:{data}
