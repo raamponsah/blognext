@@ -10,7 +10,7 @@ import { GetStaticProps, NextPage } from 'next'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({name}:{name:string}) {
-
+console.log(name)
   return (
     <>
       <Head>
@@ -35,9 +35,9 @@ export default function Home({name}:{name:string}) {
 export const getStaticProps:GetStaticProps = async()=>{
 
   // const response = await axios.get('http://localhost:3000/api/staff/')
-  const data = {name:'John Lennon'}
+  const {name} = {name:'John Lennon'}
 
   return {
-      props:{data}
+      props:{name}
   }
 }
