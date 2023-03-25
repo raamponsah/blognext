@@ -40,6 +40,6 @@ export const getStaticProps:GetStaticProps = async()=>{
   const data = {name:'John Lennon'}
 
   return {
-      props:{data:'names'}
+      props:{data}
   }
 }
