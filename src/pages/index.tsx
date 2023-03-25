@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,10 +30,10 @@ export default function Home({data}:any) {
 
 export  const getStaticProps = async ()=>{
 
-  const response = await fetch('http://localhost:3000/api/staff/')
-  const data = await response.json()
-  console.log(data)
+  const response = await axios.get('http://localhost:3000/api/staff/')
+  
+  console.log(response.data)
   return {
-      props:{data}
+      props:{data:response.data}
   }
 }
