@@ -6,8 +6,8 @@ import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({data}:any) {
-  console.log(data.docs)
+export default function Home() {
+
   return (
     <>
       <Head>
@@ -17,23 +17,24 @@ export default function Home({data}:any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-       {
+        <h1>DEPLOYED!</h1>
+       {/* {
         data.docs.map((datum:any)=>{
          return (<h3 key={datum.id}>{datum?.fullName}</h3>)
         })
-       }
+       } */}
       </main>
     </>
   )
 }
 
 
-export  const getStaticProps = async ()=>{
+// export  const getStaticProps = async ()=>{
 
-  const response = await axios.get('http://localhost:3000/api/staff/')
+//   const response = await axios.get('http://localhost:3000/api/staff/')
   
-  console.log(response.data)
-  return {
-      props:{data:response.data}
-  }
-}
+//   console.log(response.data)
+//   return {
+//       props:{data:response.data}
+//   }
+// }
