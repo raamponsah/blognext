@@ -10,7 +10,7 @@ import { GetStaticProps, NextPage } from 'next'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({name}:{name:string}) {
-console.log(name)
+console.log("Data received! =>", name)
   return (
     <>
       <Head>
