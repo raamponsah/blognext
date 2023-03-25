@@ -29,12 +29,12 @@ export default function Home() {
 }
 
 
-// export  const getStaticProps = async ()=>{
+export  async function getStaticProps(){
 
-//   const response = await axios.get('http://localhost:3000/api/staff/')
+  const response = await axios.get('http://localhost:3000/api/staff/')
   
-//   console.log(response.data)
-//   return {
-//       props:{data:response.data}
-//   }
-// }
+  console.log(response.data)
+  return {
+      props:{data:response.data}
+  }
+}
