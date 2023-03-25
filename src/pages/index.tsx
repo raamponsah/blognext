@@ -9,8 +9,22 @@ import { GetStaticProps, NextPage } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({name}:{name:string}) {
-console.log("Data received! =>", name)
+"id": "641efa50abaa737c95f20388",
+      "fullName": "Jeremy Fabian",
+      "about": "She is amazing",
+      "createdAt": "2023-03-25T13:42:40.638Z",
+      "updatedAt": "2023-03-25T13:42:40.638Z"
+
+interface DocInterface{
+  id:string,
+  fullName:string,
+  about:string,
+  createdAt:string,
+  updatedAt:string
+}
+
+export default function Home({docs}:{docs:DocInterface[]}) {
+console.log("Data received! =>", docs)
   return (
     <>
       <Head>
@@ -20,12 +34,12 @@ console.log("Data received! =>", name)
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>DEPLOYED! {name}</h1>
-       {/* {
-        data.docs.map((datum:any)=>{
+        <h1>DEPLOYED!</h1>
+       {
+        docs.map((datum:any)=>{
          return (<h3 key={datum.id}>{datum?.fullName}</h3>)
         })
-       } */}
+       }
       </main>
     </>
   )
@@ -34,10 +48,11 @@ console.log("Data received! =>", name)
 
 export const getStaticProps:GetStaticProps = async()=>{
 
-  // const response = await axios.get('http://localhost:3000/api/staff/')
-  const {name} = {name:'John Lennon'}
+  const response = await axios.get('http://localhost:3000/api/staff/')
+  const data = await response.data
+  const {docs} = data
 
   return {
-      props:{name}
+      props:{docs}
   }
 }
