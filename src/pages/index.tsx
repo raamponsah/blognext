@@ -10,15 +10,14 @@ import { GetStaticProps, NextPage } from 'next'
 const inter = Inter({ subsets: ['latin'] })
 
 interface DocInterface{
-  id:string,
-  fullName:string,
-  about:string,
-  createdAt:string,
-  updatedAt:string
+  userId: String|Number,
+  id: String|Number,
+  title: String,
+  completed: Boolean
 }
 
-export default function Home({docs}:{docs:DocInterface[]}) {
-console.log("Data received! =>", docs)
+export default function Home({data}:{data:DocInterface}) {
+console.log("Data received! =>", data)
   return (
     <>
       <Head>
@@ -29,11 +28,7 @@ console.log("Data received! =>", docs)
       </Head>
       <main className={styles.main}>
         <h1>DEPLOYED!</h1>
-       {
-        docs.map((datum:any)=>{
-         return (<h3 key={datum.id}>{datum?.fullName}</h3>)
-        })
-       }
+       {data.title}
       </main>
     </>
   )
@@ -42,11 +37,11 @@ console.log("Data received! =>", docs)
 
 export const getStaticProps:GetStaticProps = async()=>{
 
-  const response = await axios.get('http://localhost:3000/api/staff/')
-  const data = await response.data
-  const {docs} = data
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  const data = await response.json()
+
 
   return {
-      props:{docs}
+      props:{data}
   }
 }
